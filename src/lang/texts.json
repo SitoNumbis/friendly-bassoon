@@ -9,6 +9,8 @@
     },
     "notes": {
       "title": "Mis Notas",
+      "titleLabel": "Título",
+      "bodyLabel": "Contenido",
       "editing": "Editando",
       "newOne": "Nueva nota"
     }

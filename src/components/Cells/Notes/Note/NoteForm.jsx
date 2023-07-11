@@ -11,6 +11,7 @@ import { useNote } from "../NotesProvider";
 // components
 import SimpleInput from "../../../SimpleInput/SimpleInput";
 import { useCallback } from "react";
+import { css } from "@emotion/css";
 
 function NoteForm() {
   const { languageState } = useLanguage();
@@ -59,6 +60,7 @@ function NoteForm() {
       <div className="w-full p-4 gap-2 flex flex-col items-start justify-start">
         <SimpleInput
           className="w-full"
+          label={languageState.texts.notes.titleLabel}
           inputProps={{
             id: "note-title",
             value: currentTitle,
@@ -67,10 +69,16 @@ function NoteForm() {
           }}
         />
         <SimpleInput
-          className="w-full"
+          className={`w-full h-full ${css({
+            div: {
+              height: "100%",
+            },
+          })}`}
+          label={languageState.texts.notes.bodyLabel}
           inputProps={{
             value: currentBody,
             onChange: (e) => setCurrentBody(e.target.value),
+            className: "h-full",
             type: "textarea",
           }}
         />
