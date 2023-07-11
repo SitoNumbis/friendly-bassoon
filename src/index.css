@@ -6,6 +6,14 @@ body {
   @apply bg-dark-bg;
 }
 
+*:focus {
+  outline: none;
+}
+
+textarea {
+  resize: none;
+}
+
 h1,
 h2,
 h3,
@@ -14,6 +22,8 @@ h5,
 h6,
 a,
 p,
+input,
+textarea,
 label,
 button,
 span {
@@ -22,4 +32,9 @@ span {
 
 h2 {
   @apply text-2xl;
+}
+
+textarea,
+input {
+  @apply rounded-lg px-2 py-1 bg-dark-alt-bg-opacity shadow-sm w-full backdrop-blur-xl;
 }

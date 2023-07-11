@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 
 // contexts
+import { DialogProvider } from "./components/DialogPortal/DialogContext.jsx";
 import { NotificationProvider } from "./contexts/NotificationProvider";
 import { LanguageProvider } from "./contexts/LanguageProvider";
 import { UserProvider } from "./contexts/UserProvider";
@@ -25,7 +26,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <UserProvider>
       <ModeProvider>
         <NotificationProvider>
-          <App />
+          <DialogProvider>
+            <App />
+          </DialogProvider>
         </NotificationProvider>
       </ModeProvider>
     </UserProvider>

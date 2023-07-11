@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-function Note({ id, title, body, onClick, onDelete }) {
+function Note({ id, title, body, onDelete }) {
   return (
     <div id={id} className="flex items-center justify-between w-full">
       <div>
@@ -15,11 +15,7 @@ function Note({ id, title, body, onClick, onDelete }) {
         <p>{body}</p>
       </div>
       <div className="flex gap-2">
-        <Link
-          to={`/edit?id=${id}`}
-          className="transition hover:text-primary"
-          onClick={() => onClick(id)}
-        >
+        <Link to={`/edit?id=${id}`} className="transition hover:text-primary">
           <FontAwesomeIcon icon={faEdit} />
         </Link>
         <button
@@ -34,10 +30,9 @@ function Note({ id, title, body, onClick, onDelete }) {
 }
 
 Note.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   title: PropTypes.string,
   body: PropTypes.string,
-  type: PropTypes.object,
   onClick: PropTypes.func,
   onDelete: PropTypes.func,
 };
@@ -51,7 +46,6 @@ function arePropsEqual(oldProps, newProps) {
     oldProps.id === newProps.id &&
     oldProps.title === newProps.title &&
     oldProps.body === newProps.body &&
-    oldProps.type === newProps.type &&
     oldProps.onClick === newProps.onClick &&
     oldProps.onDelete === newProps.onDelete
   );

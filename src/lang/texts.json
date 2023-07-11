@@ -1,7 +1,15 @@
 {
   "es": {
+    "ariaLabels": {
+      "reload": "Recargar"
+    },
+    "error": {
+      "title": "Error!",
+      "reload": "Recargar"
+    },
     "notes": {
       "title": "Mis Notas",
+      "editing": "Editando",
       "newOne": "Nueva nota"
     }
   }
