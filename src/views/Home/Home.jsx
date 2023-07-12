@@ -1,4 +1,5 @@
 // components
+import Weather from "../../components/Cells/Weather/Weather";
 import Notes from "../../components/Cells/Notes/Notes";
 
 // contexts
@@ -14,7 +15,7 @@ function Home() {
         <NoteProvider>
           <Notes />
         </NoteProvider>
-        <div className="cell"></div>
+        <Weather />
         <div></div>
         <div></div>
         <div></div>

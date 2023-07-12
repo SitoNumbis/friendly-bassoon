@@ -17,5 +17,7 @@
 }
 
 .main-grid .cell {
+  border-width: 1px;
+  border-color: #80808030;
   @apply rounded-lg;
 }

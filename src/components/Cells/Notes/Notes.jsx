@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { memo, useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 
 import { parseQueries } from "some-javascript-utils/browser";
@@ -65,5 +65,9 @@ function Notes() {
     </article>
   );
 }
+
+const NotesMemo = memo((props) => <NotesMemo {...props} />);
+
+NotesMemo.displayName = "Notes";
 
 export default Notes;
