@@ -18,7 +18,7 @@
   border-radius: 20px;
   top: 50%;
   transition: all 500ms ease;
-  @apply bg-white;
+  @apply bg-dark-text;
 }
 
 .deactivated {

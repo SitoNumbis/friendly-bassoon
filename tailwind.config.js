@@ -9,6 +9,7 @@ export default {
       "dark-alt-bg": "#222222",
       "dark-alt-bg-opacity": "#2222228a",
       "dark-text": "#fbfbfb",
+      "dark-alt-text": "#ababab",
     },
     extend: {},
   },

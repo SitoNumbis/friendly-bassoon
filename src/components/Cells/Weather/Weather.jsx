@@ -12,6 +12,9 @@ import {
 // contexts
 import { useLanguage } from "../../../contexts/LanguageProvider";
 
+// components
+import Loading from "../../Loading/Loading";
+
 // styles
 import styles from "./styles.module.css";
 
@@ -33,6 +36,10 @@ function Weather() {
 
   const [weatherCode, setWeatherCode] = useState(0);
   const [isDay, setIsDay] = useState(0);
+  const [temperature, setTemperature] = useState(0);
+  const [windspeed, setWindspeed] = useState(0);
+
+  const [loading, setLoading] = useState(true);
 
   async function weatherFetch() {
     try {
@@ -42,9 +49,11 @@ function Weather() {
       const data = await response.json();
       const { current_weather } = data;
       const { is_day, temperature, weathercode, windspeed } = current_weather;
-      console.log(is_day, temperature);
+      console.log(data);
       setIsDay(is_day);
+      setTemperature(temperature);
       setWeatherCode(weathercode);
+      setWindspeed(windspeed);
     } catch (err) {
       console.error(err);
     }
@@ -56,11 +65,20 @@ function Weather() {
 
   return (
     <article id="weather" className={`cell ${styles.main}`}>
-      <FontAwesomeIcon icon={icons(weatherCode, isDay)} />
-      <div>
-        <p></p>
-        <p>/* °C */</p>
-      </div>
+      {loading ? <Loading /> : null}
+
+      {!loading ? (
+        <>
+          <FontAwesomeIcon
+            className="text-6xl text-dark-text appear"
+            icon={icons(weatherCode, isDay)}
+          />
+          <div className="appear">
+            <p className="text-dark-alt-text">{temperature} °C</p>
+            <p className="text-dark-alt-text">{windspeed} Km/h</p>
+          </div>
+        </>
+      ) : null}
     </article>
   );
 }
