@@ -1,13 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import useSound from "use-sound";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-// contexts
-import { useLanguage } from "../../../contexts/LanguageProvider";
-
-// styles
-import styles from "./styles.module.css";
 import {
   faBackward,
   faForward,
@@ -17,19 +10,27 @@ import {
   faShuffle,
 } from "@fortawesome/free-solid-svg-icons";
 
+// components
+import Loading from "../../Loading/Loading";
+
+// contexts
+import { useLanguage } from "../../../contexts/LanguageProvider";
+
+// styles
+import styles from "./styles.module.css";
+
 // images
 import noImage from "../../../assets/images/no-image.jpg";
 
 // audio
 import audio from "../../../assets/audio/lofi.mp3";
-import { useMemo } from "react";
 
 function MusicPlayer() {
   const { languageState } = useLanguage();
 
-  const [album, setAlbum] = useState("no name");
-  const [author, setAuthor] = useState("unknown");
-  const [title, setTitle] = useState("no title");
+  const [album, setAlbum] = useState(undefined);
+  const [author, setAuthor] = useState(undefined);
+  const [title, setTitle] = useState(undefined);
 
   const [playing, setPlaying] = useState(false);
   const [shuffle, setShuffle] = useState(false);
@@ -47,18 +48,34 @@ function MusicPlayer() {
 
   const [volume, setVolume] = useState(1);
 
-  const handlePause = (e) => {
-    const { target } = e;
-    const { currentTime } = target;
-    setCurrentTime(currentTime);
-    setPlaying(false);
-  };
-
   const [currentTimeTimeoutId, setCurrentTimeTimeoutId] = useState(null);
+
+  const handlePause = useCallback(
+    (e) => {
+      const { target } = e;
+      const { currentTime } = target;
+      setCurrentTime(currentTime);
+      setPlaying(false);
+      clearInterval(currentTimeTimeoutId);
+    },
+    [currentTimeTimeoutId]
+  );
+
+  const [loading, setLoading] = useState(false);
 
   const handleInit = (e) => {
     const { target } = e;
     const { duration, currentTime, volume } = target;
+    // eslint-disable-next-line no-undef
+    ID3.loadTags(audio, function () {
+      // eslint-disable-next-line no-undef
+      var tags = ID3.getAllTags(audio);
+      const { artist, title, album } = tags;
+      setAuthor(artist);
+      setTitle(title);
+      setAlbum(album);
+      setLoading(false);
+    });
     setCurrentTime(currentTime);
     setDuration(duration);
   };
@@ -71,23 +88,33 @@ function MusicPlayer() {
       setCurrentTime(target.currentTime);
     });
     setCurrentTimeTimeoutId(intervalId);
-    console.log(intervalId);
   };
 
   useEffect(() => {
     const newAudio = new Audio(audio);
     setCurrentSong(newAudio);
-    newAudio.addEventListener("ended", handlePause);
+
     newAudio.addEventListener("play", handlePlay);
-    newAudio.addEventListener("pause", handlePause);
     newAudio.addEventListener("loadeddata", handleInit);
     return () => {
-      newAudio.removeEventListener("ended", handlePause);
       newAudio.removeEventListener("loadeddata", handleInit);
       newAudio.removeEventListener("play", handlePlay);
-      newAudio.removeEventListener("pause", handlePause);
     };
   }, []);
+
+  useEffect(() => {
+    if (currentSong !== null) {
+      currentSong.addEventListener("ended", handlePause);
+      currentSong.addEventListener("pause", handlePause);
+    }
+
+    return () => {
+      if (currentSong !== null) {
+        currentSong.removeEventListener("ended", handlePause);
+        currentSong.removeEventListener("pause", handlePause);
+      }
+    };
+  }, [handlePause]);
 
   const localPlay = useCallback(() => {
     setPlaying(!playing);
@@ -97,64 +124,94 @@ function MusicPlayer() {
     }
   }, [currentSong, playing]);
 
+  const handlerRange = useCallback(
+    (event) => {
+      const sliderEl = document.querySelector("#range2");
+      const progress = (currentTime / sliderEl.max) * 100;
+      console.log(progress);
+      sliderEl.style.background = `linear-gradient(to right, #f50 ${progress}%, #ccc ${progress}%)`;
+    },
+    [currentTime]
+  );
+
+  useEffect(() => {
+    const sliderEl = document.querySelector("#range2");
+
+    sliderEl.addEventListener("input", handlerRange);
+    return () => {
+      sliderEl.removeEventListener("input", handlerRange);
+    };
+  }, [handlerRange]);
+
   return (
     <article id="music-player" className={`cell ${styles.main}`}>
-      <img
-        src={noImage}
-        className="rounded-s-3xl w-[150px] h-full object-cover object-center"
-        alt={`${author} - ${title}`}
-      />
-      <div className="flex flex-col h-full w-full items-start justify-center gap-2 rounded">
-        <div>
-          <span className="text-dark-alt-text text-sm">
-            {languageState.texts.musicPlayer.album}
-          </span>
-          <span className="ml-2">{album}</span>
-        </div>
-        <div>
-          <h3 className="text-xl">
-            {author} - {title}
-          </h3>
-        </div>
-        <div className="flex flex-col w-full">
-          <div className="flex w-full items-center justify-between">
-            <span className="text-sm text-dark-alt-text">
-              {parseTime(currentTime)}
-            </span>
-            <span className="text-sm text-dark-alt-text">
-              {parseTime(duration)}
-            </span>
+      {loading ? <Loading /> : null}
+      {!loading ? (
+        <>
+          <img
+            src={noImage}
+            className="rounded-s-3xl w-[150px] h-full object-cover object-center"
+            alt={`${author} - ${title}`}
+          />
+          <div className="flex flex-col h-full w-full items-start justify-center gap-2 rounded">
+            <div>
+              <span className="text-dark-alt-text text-sm">
+                {languageState.texts.musicPlayer.album}
+              </span>
+              <span className="ml-2">
+                {album || languageState.texts.musicPlayer.noAlbum}
+              </span>
+            </div>
+            <div>
+              <h3 className="text-xl">
+                {author || languageState.texts.musicPlayer.noAuthor} -{" "}
+                {title || languageState.texts.musicPlayer.noTitle}
+              </h3>
+            </div>
+            <div className="flex flex-col w-full">
+              <div className="flex w-full items-center justify-between">
+                <span className="text-sm text-dark-alt-text">
+                  {parseTime(currentTime)}
+                </span>
+                <span className="text-sm text-dark-alt-text">
+                  {parseTime(duration)}
+                </span>
+              </div>
+              <div className="range">
+                <input id="range2" type="range" max={duration} min={0} />
+              </div>
+            </div>
+            <div className="flex w-full justify-between items-center pr-4 mt-1">
+              <button
+                className={`button ${repeat ? "text-primary" : ""}`}
+                onClick={() => setRepeat(!repeat)}
+              >
+                <FontAwesomeIcon icon={faRepeat} />
+              </button>
+              <div className="flex justify-between items-center gap-2">
+                <button className="button">
+                  <FontAwesomeIcon icon={faBackward} />
+                </button>
+                <button
+                  onClick={localPlay}
+                  className="button bg-dark-alt-text hover:bg-dark-text text-dark-bg w-10 h-10 rounded-full flex items-center justify-center"
+                >
+                  <FontAwesomeIcon icon={playing ? faPause : faPlay} />
+                </button>
+                <button className="button">
+                  <FontAwesomeIcon icon={faForward} />
+                </button>
+              </div>
+              <button
+                className={`button ${shuffle ? "text-primary" : ""}`}
+                onClick={() => setShuffle(!shuffle)}
+              >
+                <FontAwesomeIcon icon={faShuffle} />
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="flex w-full justify-between items-center pr-4 mt-1">
-          <button
-            className={`button ${repeat ? "text-primary" : ""}`}
-            onClick={() => setRepeat(!repeat)}
-          >
-            <FontAwesomeIcon icon={faRepeat} />
-          </button>
-          <div className="flex justify-between items-center gap-2">
-            <button className="button">
-              <FontAwesomeIcon icon={faBackward} />
-            </button>
-            <button
-              onClick={localPlay}
-              className="button bg-dark-alt-text hover:bg-dark-text text-dark-bg w-10 h-10 rounded-full flex items-center justify-center"
-            >
-              <FontAwesomeIcon icon={playing ? faPause : faPlay} />
-            </button>
-            <button className="button">
-              <FontAwesomeIcon icon={faForward} />
-            </button>
-          </div>
-          <button
-            className={`button ${shuffle ? "text-primary" : ""}`}
-            onClick={() => setShuffle(!shuffle)}
-          >
-            <FontAwesomeIcon icon={faShuffle} />
-          </button>
-        </div>
-      </div>
+        </>
+      ) : null}
     </article>
   );
 }

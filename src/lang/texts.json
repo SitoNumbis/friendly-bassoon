@@ -8,6 +8,9 @@
       "reload": "Recargar"
     },
     "musicPlayer": {
+      "noTitle": "Sin título",
+      "noAuthor": "Desconocido",
+      "noAlbum": "Desonocido",
       "album": "Álbum"
     },
     "weather": {

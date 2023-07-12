@@ -1,6 +1,6 @@
 .main-grid {
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 150px 1fr 150px;
+  grid-template-rows: 180px 1fr 150px;
   background: #c31432; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
