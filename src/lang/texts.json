@@ -12,7 +12,7 @@
       "titleLabel": "Título",
       "bodyLabel": "Contenido",
       "editing": "Editando",
-      "newOne": "Nueva nota"
+      "empty": "Nota sin titulo"
     }
   }
 }

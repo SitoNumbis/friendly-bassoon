@@ -7,11 +7,16 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
+// contexts
+import { useLanguage } from "../../../../contexts/LanguageProvider";
+
 function Note({ id, title, body, onDelete }) {
+  const { languageState } = useLanguage();
+
   return (
     <div id={id} className="flex items-center justify-between w-full">
       <div>
-        <h3>{title}</h3>
+        <h3>{title ? title.length : languageState.texts.notes.empty}</h3>
         <p>{body}</p>
       </div>
       <div className="flex gap-2">

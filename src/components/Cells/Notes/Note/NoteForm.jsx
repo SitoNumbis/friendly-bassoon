@@ -38,11 +38,11 @@ function NoteForm() {
     }
   }, [noteState]);
 
-  console.log(noteState.editing.length);
-
   return (
     <div
-      className={`transition ease-in duration-500 w-full min-w-[100%] h-full ${
+      className={`transition ease-in duration-500 w-full min-w-[100%] ${css({
+        height: "calc(100% - 36px)",
+      })} ${
         noteState.editing.length ? "translate-x-0" : "-translate-x-[100%]"
       }`}
     >
@@ -57,7 +57,13 @@ function NoteForm() {
           <FontAwesomeIcon icon={faSave} />
         </button>
       </div>
-      <div className="w-full p-4 gap-2 flex flex-col items-start justify-start">
+      <div
+        className={`w-full p-4 gap-2 flex flex-col items-start justify-start ${css(
+          {
+            height: "calc(100% - 36px)",
+          }
+        )}`}
+      >
         <SimpleInput
           className="w-full"
           label={languageState.texts.notes.titleLabel}
