@@ -7,6 +7,7 @@ import {
   faMoon,
   faCloudSun,
   faCloudMoon,
+  faInfo,
 } from "@fortawesome/free-solid-svg-icons";
 
 // contexts
@@ -37,7 +38,7 @@ function Weather() {
   const [weatherCode, setWeatherCode] = useState(0);
   const [isDay, setIsDay] = useState(0);
   const [temperature, setTemperature] = useState(0);
-  const [windspeed, setWindspeed] = useState(0);
+  const [windSpeed, setWindSpeed] = useState(0);
 
   const [loading, setLoading] = useState(true);
 
@@ -49,14 +50,14 @@ function Weather() {
       const data = await response.json();
       const { current_weather } = data;
       const { is_day, temperature, weathercode, windspeed } = current_weather;
-      console.log(data);
       setIsDay(is_day);
       setTemperature(temperature);
       setWeatherCode(weathercode);
-      setWindspeed(windspeed);
+      setWindSpeed(windspeed);
     } catch (err) {
       console.error(err);
     }
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -66,7 +67,9 @@ function Weather() {
   return (
     <article id="weather" className={`cell ${styles.main}`}>
       {loading ? <Loading /> : null}
-
+      <button className="border-dark-alt-text border-2 rounded-full w-6 h-6 text-[10px] absolute top-3 right-3 opacity-[0.6] transition hover:opacity-[1]">
+        <FontAwesomeIcon icon={faInfo} />
+      </button>
       {!loading ? (
         <>
           <FontAwesomeIcon
@@ -74,8 +77,14 @@ function Weather() {
             icon={icons(weatherCode, isDay)}
           />
           <div className="appear">
-            <p className="text-dark-alt-text">{temperature} °C</p>
-            <p className="text-dark-alt-text">{windspeed} Km/h</p>
+            <p className="text-dark-alt-text">
+              {languageState.texts.weather.temperature}{" "}
+              <span className="text-dark-text text-2xl"> {temperature}</span> °C
+            </p>
+            <p className="text-dark-alt-text">
+              {languageState.texts.weather.windSpeed}{" "}
+              <span className="text-dark-text text-xl">{windSpeed}</span> Km/h
+            </p>
           </div>
         </>
       ) : null}

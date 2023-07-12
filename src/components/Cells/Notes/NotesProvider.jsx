@@ -16,6 +16,7 @@ const noteReducer = (oldNotes, action) => {
     }
     case "save": {
       const { id, newTitle, newBody } = action;
+      console.log(id, newTitle, newBody);
       const newNotes = { ...oldNotes };
       newNotes.notes[id].title = newTitle;
       newNotes.notes[id].body = newBody;
