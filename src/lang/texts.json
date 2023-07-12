@@ -7,6 +7,9 @@
       "title": "Error!",
       "reload": "Recargar"
     },
+    "musicPlayer": {
+      "album": "Álbum"
+    },
     "weather": {
       "temperature": "Temperatura de",
       "windSpeed": "Velocidad del viento"

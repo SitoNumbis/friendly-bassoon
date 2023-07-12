@@ -67,7 +67,7 @@ function Weather() {
   return (
     <article id="weather" className={`cell ${styles.main}`}>
       {loading ? <Loading /> : null}
-      <button className="border-dark-alt-text border-2 rounded-full w-6 h-6 text-[10px] absolute top-3 right-3 opacity-[0.6] transition hover:opacity-[1]">
+      <button className="border-dark-alt-text border-2 rounded-full w-6 h-6 text-[10px] absolute top-3 right-3 opacity-[0.6] transition hover:opacity-[1] cursor-default">
         <FontAwesomeIcon icon={faInfo} />
       </button>
       {!loading ? (

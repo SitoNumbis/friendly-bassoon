@@ -7,6 +7,7 @@ import { NoteProvider } from "../../components/Cells/Notes/NotesProvider";
 
 // styles
 import "./styles.css";
+import MusicPlayer from "../../components/Cells/MusicPlayer/MusicPlayer";
 
 function Home() {
   return (
@@ -16,7 +17,7 @@ function Home() {
           <Notes />
         </NoteProvider>
         <Weather />
-        <div></div>
+        <MusicPlayer />
         <div></div>
         <div></div>
         <div></div>

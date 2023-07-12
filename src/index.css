@@ -36,5 +36,9 @@ h2 {
 
 textarea,
 input {
-  @apply rounded-lg px-2 py-1 bg-dark-alt-bg-opacity shadow-sm w-full backdrop-blur-xl;
+  @apply rounded-3xl px-2 py-1 bg-dark-alt-bg-opacity shadow-sm w-full backdrop-blur-xl;
+}
+
+.button {
+  @apply transition hover:text-primary cursor-default;
 }

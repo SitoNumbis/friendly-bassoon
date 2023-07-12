@@ -54,7 +54,7 @@ function Notes() {
       >
         <div className="flex w-full items-center justify-between">
           <h2>{languageState.texts.notes.title}</h2>
-          <button className="transition hover:text-primary" onClick={addNote}>
+          <button className="button" onClick={addNote}>
             <FontAwesomeIcon icon={faAdd} />
           </button>
         </div>

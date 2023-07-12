@@ -1,6 +1,6 @@
 .main-grid {
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 150px 1fr 150px;
   background: #c31432; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -19,5 +19,5 @@
 .main-grid .cell {
   border-width: 1px;
   border-color: #80808060;
-  @apply rounded-lg;
+  @apply rounded-3xl;
 }

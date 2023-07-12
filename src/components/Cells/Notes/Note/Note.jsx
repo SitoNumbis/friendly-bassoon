@@ -31,7 +31,7 @@ function Note({ id, title, body }) {
           <FontAwesomeIcon icon={faEdit} />
         </Link>
         <button
-          className="transition hover:text-primary"
+          className="button"
           onClick={() => setNoteState({ type: "delete", id })}
         >
           <FontAwesomeIcon icon={faTrash} />

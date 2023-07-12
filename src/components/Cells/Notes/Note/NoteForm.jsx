@@ -53,7 +53,7 @@ function NoteForm() {
           </Link>
           <h3 className="text-xl">{languageState.texts.notes.editing}</h3>
         </div>
-        <button onClick={onLocalSave} className="transition hover:text-primary">
+        <button onClick={onLocalSave} className="button">
           <FontAwesomeIcon icon={faSave} />
         </button>
       </div>
