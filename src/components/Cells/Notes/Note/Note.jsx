@@ -49,8 +49,8 @@ NoteMemo.displayName = "Note";
 function arePropsEqual(oldProps, newProps) {
   return (
     oldProps.id === newProps.id &&
-    oldProps.title === newProps.title &&
     oldProps.body === newProps.body &&
+    oldProps.title === newProps.title &&
     oldProps.onClick === newProps.onClick &&
     oldProps.onDelete === newProps.onDelete
   );
