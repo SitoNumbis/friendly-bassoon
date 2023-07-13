@@ -189,7 +189,7 @@ function MusicPlayer() {
                 />
               </div>
             </div>
-            <div className="flex w-full justify-between items-center pr-4 mt-1">
+            <div className="flex w-full justify-between items-center mt-1">
               <button
                 className={`button ${repeat ? "text-primary" : ""}`}
                 onClick={() => setRepeat(!repeat)}

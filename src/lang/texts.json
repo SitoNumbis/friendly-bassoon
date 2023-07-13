@@ -3,6 +3,9 @@
     "ariaLabels": {
       "reload": "Recargar"
     },
+    "navbar": {
+      "greets": "Hola"
+    },
     "error": {
       "title": "Error!",
       "reload": "Recargar"

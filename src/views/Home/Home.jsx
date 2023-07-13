@@ -11,7 +11,7 @@ import MusicPlayer from "../../components/Cells/MusicPlayer/MusicPlayer";
 
 function Home() {
   return (
-    <section className="w-full h-screen">
+    <section className="w-full">
       <div className={"main-grid h-full w-full"}>
         <NoteProvider>
           <Notes />

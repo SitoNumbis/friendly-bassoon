@@ -1,6 +1,6 @@
 .main-grid {
   grid-template-columns: 200px 200px 1fr 1fr 1fr 1fr;
-  grid-template-rows: 180px 1fr 150px;
+  grid-template-rows: 180px 250px 160px;
   /* background: #c31432; */ /* fallback for old browsers */
   /* background: -webkit-linear-gradient(
     to right,
@@ -13,7 +13,7 @@
     #c31432
   ); */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-  @apply grid gap-3 p-3 bg-dark-bg;
+  @apply grid gap-3 bg-dark-bg;
 }
 
 .main-grid .cell {
