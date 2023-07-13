@@ -45,7 +45,7 @@ function Navbar() {
   const [searching, setSearching] = useState(false);
 
   return (
-    <header className={`${styles.main} bg-dark-alt-bg py-[4.5px] pl-[4.5px]`}>
+    <header className={`${styles.main}`}>
       <div className="flex h-full gap-3 items-center justify-start">
         <div className="w-full h-full relative">
           <img

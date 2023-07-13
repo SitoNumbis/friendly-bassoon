@@ -148,7 +148,7 @@ function MusicPlayer() {
   }, [handlerRange]);
 
   return (
-    <article id="music-player" className={`cell ${styles.main}`}>
+    <article id="music-player" className={`cell ${styles.main} pr-3`}>
       {loading ? <Loading /> : null}
       {!loading ? (
         <>

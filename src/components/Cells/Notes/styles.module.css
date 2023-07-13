@@ -1,5 +1,8 @@
 .main {
   grid-area: 1 / 1 / span 2 / span 2;
   backdrop-filter: blur(22px);
-  @apply bg-dark-alt-bg-opacity flex overflow-x-hidden;
+  border-right: 1px solid #80808060;
+  border-top: 1px solid #80808060;
+  background-color: #80808030;
+  @apply flex overflow-x-hidden;
 }

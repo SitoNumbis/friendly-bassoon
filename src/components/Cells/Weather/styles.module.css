@@ -1,5 +1,7 @@
 .main {
   grid-area: 3 / 1 / span 1 / span 2;
   backdrop-filter: blur(22px);
-  @apply bg-dark-alt-bg-opacity relative flex items-center justify-center gap-5 overflow-x-hidden border-dashed;
+  border: 1px solid #80808060;
+  background-color: #80808030;
+  @apply relative flex items-center justify-center gap-5 overflow-x-hidden border-dashed;
 }

@@ -12,12 +12,9 @@
     #240b36,
     #c31432
   ); */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  @apply grid gap-3 bg-dark-bg;
+  @apply grid gap-3 backdrop-blur-xl rounded-3xl;
 }
 
 .main-grid .cell {
-  border-width: 1px;
-  border-color: #80808060;
   @apply rounded-3xl;
 }
