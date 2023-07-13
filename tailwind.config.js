@@ -4,6 +4,7 @@ export default {
   theme: {
     colors: {
       primary: "crimson",
+      secondary: "dodgerblue",
       "dark-bg": "#1b1b1b",
       "dark-bg-opacity": "#1b1b1b8a",
       "dark-alt-bg": "#222222",

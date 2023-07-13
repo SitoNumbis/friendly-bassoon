@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faAdd,
   faBroadcastTower,
   faChevronDown,
   faEdit,
@@ -46,11 +47,16 @@ function Navbar() {
   return (
     <header className={`${styles.main} bg-dark-alt-bg py-[4.5px] pl-[4.5px]`}>
       <div className="flex h-full gap-3 items-center justify-start">
-        <img
-          className="h-[100%] w-[100%] rounded-3xl"
-          src={noProduct}
-          alt={`${area}-photo`}
-        />
+        <div className="w-full h-full relative">
+          <img
+            className="h-[100%] w-[100%] rounded-3xl"
+            src={noProduct}
+            alt={`${area}-photo`}
+          />
+          <button className="button absolute bottom-0 right-0 w-7 text-sm bg-secondary p-1 rounded-lg">
+            <FontAwesomeIcon icon={faEdit} />
+          </button>
+        </div>
         <div className="flex flex-col w-full">
           <h3>
             {area}{" "}
@@ -59,7 +65,7 @@ function Navbar() {
             </button>
           </h3>
           <p className="text-dark-alt-text text-sm">
-            <FontAwesomeIcon icon={faMapPin} className="text-primary" /> {state}{" "}
+            <FontAwesomeIcon icon={faMapPin} className="text-secondary" /> {state}{" "}
             <span className="text-dark-text">{city}</span>
           </p>
         </div>
@@ -102,11 +108,16 @@ function Navbar() {
         </button>
       </div>
       <div className="flex items-center gap-3">
-        <img
-          src={noPhoto}
-          alt={user}
-          className="w-[40px] h-[40px] rounded-full"
-        />
+        <div className="relative">
+          <button className="button absolute bottom-0 -right-1 w-5 h-5 text-xs bg-secondary rounded-full">
+            <FontAwesomeIcon icon={faAdd} />
+          </button>
+          <img
+            src={noPhoto}
+            alt={user}
+            className="w-[40px] h-[40px] rounded-full"
+          />
+        </div>
         <p className="text-dark-alt-text">
           {languageState.texts.navbar.greets},{" "}
           <span className="text-dark-text">{user}</span>
