@@ -1,19 +1,19 @@
 .main-grid {
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: 200px 200px 1fr 1fr 1fr 1fr;
   grid-template-rows: 180px 1fr 150px;
-  background: #c31432; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
+  /* background: #c31432; */ /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(
     to right,
     #240b36,
     #c31432
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
+  ); */ /* Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(
     to right,
     #240b36,
     #c31432
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  ); */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-  @apply grid gap-3 p-3;
+  @apply grid gap-3 p-3 bg-dark-bg;
 }
 
 .main-grid .cell {

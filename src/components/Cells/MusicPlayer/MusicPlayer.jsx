@@ -124,19 +124,20 @@ function MusicPlayer() {
     }
   }, [currentSong, playing]);
 
-  const handlerRange = useCallback(
-    (event) => {
-      const sliderEl = document.querySelector("#range2");
-      const progress = (currentTime / sliderEl.max) * 100;
-      console.log(progress);
-      sliderEl.style.background = `linear-gradient(to right, #f50 ${progress}%, #ccc ${progress}%)`;
-    },
-    [currentTime]
-  );
+  const handlerRange = useCallback(() => {
+    const sliderEl = document.querySelector("#range2");
+    const value = sliderEl.value;
+    setCurrentTime(value);
+  }, []);
 
   useEffect(() => {
     const sliderEl = document.querySelector("#range2");
+    const progress = (currentTime / sliderEl.max) * 100;
+    sliderEl.style.background = `linear-gradient(to right, #fbfbfb ${progress}%, #222222 ${progress}%)`;
+  }, [currentTime]);
 
+  useEffect(() => {
+    const sliderEl = document.querySelector("#range2");
     sliderEl.addEventListener("input", handlerRange);
     return () => {
       sliderEl.removeEventListener("input", handlerRange);
@@ -150,7 +151,7 @@ function MusicPlayer() {
         <>
           <img
             src={noImage}
-            className="rounded-s-3xl w-[150px] h-full object-cover object-center"
+            className="rounded-3xl w-[250px] h-full object-cover object-center"
             alt={`${author} - ${title}`}
           />
           <div className="flex flex-col h-full w-full items-start justify-center gap-2 rounded">
@@ -178,7 +179,14 @@ function MusicPlayer() {
                 </span>
               </div>
               <div className="range">
-                <input id="range2" type="range" max={duration} min={0} />
+                <input
+                  id="range2"
+                  type="range"
+                  value={currentTime}
+                  max={duration}
+                  min={0}
+                  onChange={handlerRange}
+                />
               </div>
             </div>
             <div className="flex w-full justify-between items-center pr-4 mt-1">
