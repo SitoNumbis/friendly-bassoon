@@ -43,7 +43,9 @@ function MusicPlayer() {
   const parseTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time - minutes * 60);
-    return `${minutes}:${seconds}`;
+    return `${String(minutes).length ? 0 : ""}${minutes}:${
+      String(seconds).length === 1 ? 0 : ""
+    }${seconds}`;
   };
 
   const [volume, setVolume] = useState(1);
@@ -128,7 +130,8 @@ function MusicPlayer() {
     const sliderEl = document.querySelector("#range2");
     const value = sliderEl.value;
     setCurrentTime(value);
-  }, []);
+    currentSong.fastSeek(value);
+  }, [currentSong]);
 
   useEffect(() => {
     const sliderEl = document.querySelector("#range2");

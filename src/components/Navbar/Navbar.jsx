@@ -44,14 +44,14 @@ function Navbar() {
   const [searching, setSearching] = useState(false);
 
   return (
-    <header className={`${styles.main} bg-dark-alt-bg`}>
-      <div className="flex gap-3 items-center justify-start">
+    <header className={`${styles.main} bg-dark-alt-bg py-[4.5px] pl-[4.5px]`}>
+      <div className="flex h-full gap-3 items-center justify-start">
         <img
-          className="h-[100%] w-[100px] rounded-3xl"
+          className="h-[100%] w-[100%] rounded-3xl"
           src={noProduct}
           alt={`${area}-photo`}
         />
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full">
           <h3>
             {area}{" "}
             <button className="button ml-2">

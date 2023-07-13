@@ -10,7 +10,7 @@ import Home from "./views/Home/Home";
 
 function App() {
   return (
-    <main className="p-3 flex flex-col gap-3">
+    <main className="p-3 flex flex-col gap-3 max-w-[1024px] m-auto">
       <DialogPortal />
       <Handler>
         <BrowserRouter>
