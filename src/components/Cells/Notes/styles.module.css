@@ -3,6 +3,7 @@
   backdrop-filter: blur(22px);
   border-right: 1px solid #80808060;
   border-top: 1px solid #80808060;
+  border-left: 1px solid #80808060;
   background-color: #80808030;
   @apply flex overflow-x-hidden;
 }
