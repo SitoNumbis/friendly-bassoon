@@ -1,20 +1,28 @@
 .main-grid {
   grid-template-columns: 200px 200px 1fr 1fr 1fr 1fr;
   grid-template-rows: 180px 250px 160px;
-  /* background: #c31432; */ /* fallback for old browsers */
-  /* background: -webkit-linear-gradient(
-    to right,
-    #240b36,
-    #c31432
-  ); */ /* Chrome 10-25, Safari 5.1-6 */
-  /* background: linear-gradient(
-    to right,
-    #240b36,
-    #c31432
-  ); */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  @apply grid gap-3 backdrop-blur-xl rounded-3xl;
+  @apply grid gap-3 rounded-3xl;
+}
+
+@media (max-width: 1000px) {
+  .main-grid {
+    grid-template-columns: 150px 150px 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 200px;
+  }
 }
 
 .main-grid .cell {
   @apply rounded-3xl;
+}
+
+@media (max-width: 800px) {
+  .cell {
+    grid-area: auto / 1 / span 2 / auto !important;
+  }
 }

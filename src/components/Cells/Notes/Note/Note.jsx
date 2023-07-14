@@ -18,13 +18,11 @@ function Note({ id, title, body }) {
 
   return (
     <div id={id} className="flex items-center justify-between w-full">
-      <div>
-        <h3 className="text-dark-alt-text">
+      <div className="overflow-hidden whitespace-nowrap">
+        <h3 className="text-dark-alt-text overflow-ellipsis">
           {title.length ? title : languageState.texts.notes.empty}
         </h3>
-        <p className="text-sm text-dark-alt-text">
-          {body.substring(0, 17)} {body.length > 17 ? "..." : ""}
-        </p>
+        <p className="text-sm text-dark-alt-text overflow-ellipsis">{body}</p>
       </div>
       <div className="flex gap-2">
         <Link to={`/edit?id=${id}`} className="transition hover:text-primary">

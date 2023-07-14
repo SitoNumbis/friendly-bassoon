@@ -71,6 +71,7 @@ function NoteForm() {
             id: "note-title",
             value: currentTitle,
             onChange: (e) => setCurrentTitle(e.target.value),
+            className: "!pl-3",
             type: "text",
           }}
         />
@@ -84,7 +85,7 @@ function NoteForm() {
           inputProps={{
             value: currentBody,
             onChange: (e) => setCurrentBody(e.target.value),
-            className: "h-full",
+            className: "h-full !pl-3 !pt-3",
             type: "textarea",
           }}
         />

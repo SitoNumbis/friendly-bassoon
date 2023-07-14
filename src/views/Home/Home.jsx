@@ -16,8 +16,9 @@ function Home() {
         <NoteProvider>
           <Notes />
         </NoteProvider>
-        <Weather />
         <MusicPlayer />
+        <Weather />
+
         <div></div>
         <div></div>
         <div></div>

@@ -5,3 +5,9 @@
   background-color: #80808030;
   @apply relative flex items-center justify-center gap-5 overflow-x-hidden border-dashed;
 }
+
+@media (max-width: 800px) {
+  .main {
+    min-height: 250px;
+  }
+}

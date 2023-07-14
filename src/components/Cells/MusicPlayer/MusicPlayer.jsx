@@ -159,7 +159,7 @@ function MusicPlayer() {
           />
           <div className="flex flex-col h-full w-full items-start justify-center gap-2 rounded">
             <div>
-              <span className="text-dark-alt-text text-sm">
+              <span className="text-primary font-bold text-sm">
                 {languageState.texts.musicPlayer.album}
               </span>
               <span className="ml-2">

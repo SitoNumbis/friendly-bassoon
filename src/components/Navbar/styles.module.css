@@ -1,7 +1,7 @@
 .main {
   border-top: 1px solid #80808060;
   backdrop-filter: blur(24px);
-  background: #80808010;
+  background-color: #80808030;
   @apply h-[100px] rounded-3xl flex w-full items-center
     justify-between pr-5 py-[4.5px] pl-[4.5px];
 }
