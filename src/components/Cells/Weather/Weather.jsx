@@ -73,15 +73,19 @@ function Weather() {
       {!loading ? (
         <>
           <FontAwesomeIcon
-            className="text-6xl text-dark-text appear"
+            className={`text-6xl text-dark-text appear ${styles.weather}`}
             icon={icons(weatherCode, isDay)}
           />
           <div className="appear">
-            <p className="text-dark-alt-text">
+            <p className={`text-dark-alt-text`}>
               {languageState.texts.weather.temperature}{" "}
-              <span className="text-dark-text text-2xl"> {temperature}</span> °C
+              <span className={`text-dark-text text-2xl ${styles.big}`}>
+                {" "}
+                {temperature}
+              </span>{" "}
+              °C
             </p>
-            <p className="text-dark-alt-text">
+            <p className={`text-dark-alt-text `}>
               {languageState.texts.weather.windSpeed}{" "}
               <span className="text-dark-text text-xl">{windSpeed}</span> Km/h
             </p>

@@ -46,7 +46,9 @@ function Navbar() {
 
   return (
     <header className={`${styles.main}`}>
-      <div className="flex h-full gap-3 items-center justify-start">
+      <div
+        className={`flex h-full gap-3 items-center justify-start ${styles.areaDetails}`}
+      >
         <div className="w-full h-full relative">
           <img
             className="h-[100%] w-[100%] rounded-3xl"
@@ -65,13 +67,13 @@ function Navbar() {
             </button>
           </h3>
           <p className="text-dark-alt-text text-sm">
-            <FontAwesomeIcon icon={faMapPin} className="text-secondary" /> {state}{" "}
-            <span className="text-dark-text">{city}</span>
+            <FontAwesomeIcon icon={faMapPin} className="text-secondary" />{" "}
+            {state} <span className="text-dark-text">{city}</span>
           </p>
         </div>
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className={`flex items-center gap-3 ${styles.searchArea}`}>
         <SimpleInput
           className="p-3"
           leftIcon={
@@ -107,7 +109,7 @@ function Navbar() {
           <FontAwesomeIcon icon={faGear} />
         </button>
       </div>
-      <div className="flex items-center gap-3">
+      <div className={`flex items-center gap-3 ${styles.userArea}`}>
         <div className="relative">
           <button className="button absolute bottom-0 -right-1 w-5 h-5 text-xs bg-secondary rounded-full">
             <FontAwesomeIcon icon={faAdd} />
@@ -115,16 +117,16 @@ function Navbar() {
           <img
             src={noPhoto}
             alt={user}
-            className="w-[40px] h-[40px] rounded-full"
+            className="w-10 h-10 rounded-full"
           />
         </div>
         <p className="text-dark-alt-text">
           {languageState.texts.navbar.greets},{" "}
           <span className="text-dark-text">{user}</span>
+          <button className="button text-dark-alt-text text-sm ml-2">
+            <FontAwesomeIcon icon={faChevronDown} />
+          </button>
         </p>
-        <button className="button text-dark-alt-text text-sm">
-          <FontAwesomeIcon icon={faChevronDown} />
-        </button>
       </div>
     </header>
   );

@@ -11,3 +11,35 @@
     min-height: 250px;
   }
 }
+
+@media (max-width: 600px) {
+  .main {
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 400px) {
+  .main {
+    min-height: 150px;
+  }
+
+  .weather {
+    @apply !text-5xl;
+  }
+}
+
+@media (max-width: 340px) {
+  .weather {
+    @apply !text-4xl;
+  }
+}
+
+@media (max-width: 340px) {
+  .weather {
+    @apply !text-3xl;
+  }
+
+  .big {
+    @apply !text-xl
+  }
+}

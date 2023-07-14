@@ -5,3 +5,27 @@
   @apply h-[100px] rounded-3xl flex w-full items-center
     justify-between pr-5 py-[4.5px] pl-[4.5px];
 }
+
+@media (max-width: 800px) {
+  .searchArea {
+    display: none !important;
+  }
+}
+
+@media (max-width: 460px) {
+  .areaDetails {
+    display: none !important;
+  }
+
+  .main {
+    @apply pl-5;
+  }
+
+  .userArea {
+    @apply w-full justify-between;
+  }
+
+  .userArea img {
+    @apply w-[60px] h-[60px]
+  }
+}
